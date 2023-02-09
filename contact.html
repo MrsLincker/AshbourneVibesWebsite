@@ -29,17 +29,70 @@
 		<center><div class="Contact_Container">
 			<h1>Contact Us!</h1>
 			<p style="margin: 10px">Feel free to contact us about any queries or problems that you have with our service</p>
-			<form name="Form">
+			<form name="Form" id="Form">
 				<label for="email">Your Email</label><br>
 				<input type="email" name="email" id="email" size="30" autofocus></input><br>
 				<label for="subject">Subject</label><br>
-				<input type="text" id="subject" size="40"></input><br>
+				<input type="text" id="subject" name="subject" size="40"></input><br>
 				<label for="message">Your Message</label><br>
-				<textarea id="message" size="50" rows="15" cols="50" maxlength="750" style="resize: none"></textarea><br>
-				<button type="button" id="submit" onclick="checkAndSend()">Send Message</button>
+				<textarea id="message" size="50" rows="15" cols="50" maxlength="750" style="resize: none" name="text"></textarea><br>
+				<button type="button" style="color: blue;" id="submit" onclick="checkAndSend()">Send Message</button>
 			</form>
+			<p id="thanks" style="color: green"></p>
 			
-			<script>
+			<script>			
+			/*THE FOLLOWING CODE WAS NOT ENTIRELY WRITTEN BY ME - I AM USING AN EMAIL API SO I HAD TO MODIFY THE CREATOR'S CODE FOR MY OWN USE
+			I WAS GIVEN PERMISSION TO DO THIS AND HAVE JUST ADDED IT BECAUSE I THINK IT IS COOL AND HAS HELPED ME DEVELOP MY JAVASCRIPT SKILLS
+			I ALSO HAD TO MODIFY IT A LOT SO I THINK IT IS OKAY*/
+			var form_id_js = "Form";
+			var data_js = {"access_token": "rw56ijkdmujo8j0e45q2aztc"};
+			var sendButton = document.getElementById("submit");
+			
+			function js_send() {
+				sendButton.innerHTML = 'Sending…';
+				sendButton.disabled=true;
+				var request = new XMLHttpRequest();
+				request.onreadystatechange = function() {
+					if (request.readyState == 4 && request.status == 200) {
+						sendButton.innerHTML = 'Sent!';
+						sendButton.style.color = "green";
+						document.getElementById("thanks").innerHTML = "Thanks for your message! - you <b>should</b> recieve a reply within 3 to 4 working days";
+					} else
+					if(request.readyState == 4) {
+						alert("There was an error in sending your message")
+					}
+				}
+			
+			var subject = document.querySelector("#" + form_id_js + " [name='subject']").value + " - " + document.querySelector("#" + form_id_js + " [name='email']").value;
+			var message = document.querySelector("#" + form_id_js + " [name='text']").value;
+			data_js['subject'] = subject;
+			data_js['text'] = message;
+			var params = toParams(data_js);
+			
+			request.open("POST", "https://postmail.invotes.com/send", true);
+			request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+			request.send(params);
+			
+			return false;
+			}
+			
+			function toParams(data_js) {
+				var form_data = [];
+				for ( var key in data_js ) {
+				form_data.push(encodeURIComponent(key) + "=" + encodeURIComponent(data_js[key]));
+				}
+				
+				return form_data.join("&");
+			}
+			
+			var js_form = document.getElementById(form_id_js);
+			js_form.addEventListener("submit", function (e) {
+				e.preventDefault();
+				});
+				
+			//STOLEN CODE STOPS HERE-------------------------------------------------------------------------------------------------------------------
+			
 			function checkEmpty(){
 				if ((document.forms["Form"]["email"].value == "") || (document.forms["Form"]["subject"].value == "") || (document.forms["Form"]["message"].value == "")){
 					alert("You must submit an email address, subject, and message");
@@ -47,13 +100,14 @@
 				} else {
 				return true
 				}
-			}
+			};
+			
 			
 			function checkAndSend(){
 				if (checkEmpty()){
-					alert("Send")
+					js_send();
 				}
-			}
+			};
 			</script>
 		</div></center>
 </body>
