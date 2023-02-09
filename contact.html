@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact</title>
+	<link rel="stylesheet" href="menu_bar.css">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<style>
+			
+			.Contact_Container
+			{
+			background-color: white;
+			border-width: 10px;
+			border-color: rgb(157,208,229);
+			border: 10px solid rgb(157,208,229);
+			height: 500px;
+			width: 40%;
+			margin-top: 100px;
+			font-family: Courier New;
+			}
+	</style>
+</head>
+<body>
+		<ul>
+			<li><a href="news.html">News</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="about.html">Tickets</a></li>
+			<li><a class="active" href="home.html">Home</a></li>
+		</ul>
+		<center><div class="Contact_Container">
+			<h1>Contact Us!</h1>
+			<p style="margin: 10px">Feel free to contact us about any queries or problems that you have with our service</p>
+			<form name="Form">
+				<label for="email">Your Email</label><br>
+				<input type="email" name="email" id="email" size="30" autofocus></input><br>
+				<label for="subject">Subject</label><br>
+				<input type="text" id="subject" size="40"></input><br>
+				<label for="message">Your Message</label><br>
+				<textarea id="message" size="50" rows="15" cols="50" maxlength="750" style="resize: none"></textarea><br>
+				<button type="button" id="submit" onclick="checkAndSend()">Send Message</button>
+			</form>
+			
+			<script>
+			function checkEmpty(){
+				if ((document.forms["Form"]["email"].value == "") || (document.forms["Form"]["subject"].value == "") || (document.forms["Form"]["message"].value == "")){
+					alert("You must submit an email address, subject, and message");
+					return false
+				} else {
+				return true
+				}
+			}
+			
+			function checkAndSend(){
+				if (checkEmpty()){
+					alert("Send")
+				}
+			}
+			</script>
+		</div></center>
+</body>
+</html>
