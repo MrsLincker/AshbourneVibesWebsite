@@ -4,7 +4,7 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 		<link rel="stylesheet" href="menu_bar.css">
 		<style>
-			/* Page Title */
+			/*----------------------- Page Title -----------------------*/
 			.page_title
 			{
 			font-family: Courier New;
@@ -15,7 +15,7 @@
 			margin-bottom: 100px;
 			}		
 			
-			/* Tile on the left of Dan */
+			/*----------------------- Tile on the left of Dan -----------------------*/
 			.front_img{
 			background-image: url(top_image.jpg);
 			height: 1092px;
@@ -26,6 +26,8 @@
 			font-family: luminari, fantasy;
 			color: white;
 			max-width: 1000px;
+			transition: transform 0.25s;
+			transition-timing-function: ease;
 			}
 			.front_img span{
 			position: absolute;
@@ -40,7 +42,7 @@
 			transform: scale(0.95)
 			}
 			
-			/* Middle Tile of Arran */
+			/*----------------------- Middle Tile of Arran -----------------------*/
 			.mid_img:hover, .mid_img:focus{
 			transform: scale(1.02)
 			}
@@ -55,9 +57,11 @@
 			font-family: luminari, fantasy;
 			color: white;
 			max-width: 1000px;
+			transition: transform 0.25s;
+			transition-timing-function: ease;
 			}
 			
-			/* Tile on th right with Charlie */
+			/*----------------------- Tile on the right with Charlie -----------------------*/
 			.right_img:hover, .right_img:focus{
 			transform: scale(1.02)
 			}
@@ -74,23 +78,28 @@
 			font-family: luminari, fantasy;
 			color: white;
 			max-width: 1000px;
+			transition: transform 0.25s;
+			transition-timing-function: ease;
 			}
 			
-			/* Table of tiles */
+			/*----------------------- Table of tiles -----------------------*/
 			table, th, td{
 			}
 		</style>
 	</head>
 	
 	<body>
+		<!-- Menu Bar -->
 		<ul>
 			<li style="padding-right: 10px"><a href="news.html">News</a></li>
 			<li><a href="contact.html">Contact</a></li>
-			<li><a href="about.html">Tickets</a></li>
+			<li><a href="tickets.html">Tickets</a></li>
 			<li><a class="active" href="home.html">Home</a></li>
 		</ul>
+		<!-- Page Title -->
 		<center><div class="page_title"><u><h1>Ashbourne Top Vibes</h1></u></div></center>
 		
+		<!-- Tiles -->
 		<center><div class="artists">
 		<table style="width:97%">
 			<tr>
