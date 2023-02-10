@@ -10,24 +10,25 @@
 			font-family: Courier New;
 			font-size: 40px;
 			margin-top: 100px;
-			margin-bottom: 50px;
 			background-color: white;
 			margin-bottom: 100px;
+			width: 100%;
 			}		
 			
 			/*----------------------- Tile on the left of Dan -----------------------*/
 			.front_img{
 			background-image: url(top_image.jpg);
 			height: 1092px;
-			background-position: 40%;
+			background-position: 50%;
 			border-radius: 50px;
 			margin: 3%;
-			font-size: 40;
+			font-size: 30px;
 			font-family: luminari, fantasy;
 			color: white;
 			max-width: 1000px;
 			transition: transform 0.25s;
 			transition-timing-function: ease;
+			min-width: 300px;
 			}
 			.front_img span{
 			position: absolute;
@@ -50,15 +51,19 @@
 			transform: scale(0.95)
 			}
 			.mid_img{
-			background-image: url(left_image.jpg);
+			background-image: url(mid_image.jpg);
+			background-position: 50%;
+			background-size: 500%;
+			background-repeat: no-repeat;
 			height: 1092px;
 			border-radius: 50px;
-			font-size: 40;
+			font-size: 30px;
 			font-family: luminari, fantasy;
 			color: white;
 			max-width: 1000px;
 			transition: transform 0.25s;
 			transition-timing-function: ease;
+			min-width: 300px;
 			}
 			
 			/*----------------------- Tile on the right with Charlie -----------------------*/
@@ -69,15 +74,16 @@
 			transform: scale(0.95)
 			}	
 			.right_img{
-			background-image: url(top_image.jpg);
+			background-image: url(Charle_Image.jpg);
 			height: 1092px;
-			background-position: 40%;
+			background-position: 60%;
 			border-radius: 50px;
 			margin: 3%;
-			font-size: 40;
+			font-size: 30px;
 			font-family: luminari, fantasy;
 			color: white;
 			max-width: 1000px;
+			min-width: 300px;
 			transition: transform 0.25s;
 			transition-timing-function: ease;
 			}
@@ -90,12 +96,15 @@
 	
 	<body>
 		<!-- Menu Bar -->
+		<div class="menu">
 		<ul>
 			<li style="padding-right: 10px"><a href="news.html">News</a></li>
 			<li><a href="contact.html">Contact</a></li>
 			<li><a href="tickets.html">Tickets</a></li>
 			<li><a class="active" href="home.html">Home</a></li>
+			<li><img src="town_council_logo.png" style="float: left;height: 45px">
 		</ul>
+		</div>
 		<!-- Page Title -->
 		<center><div class="page_title"><u><h1>Ashbourne Top Vibes</h1></u></div></center>
 		
@@ -103,7 +112,7 @@
 		<center><div class="artists">
 		<table style="width:97%">
 			<tr>
-			<td width="33.3%"><div class="front_img">
+			<td width="30%"><div class="front_img">
 			<center>
 			<h1>Dan Ottewell</h1>
 			</center>
@@ -111,13 +120,13 @@
 				<p></p>
 			</span></center>
 			</div></td>
-			<td width="33.3%"><center><div class="mid_img">
+			<td width="30%"><center><div class="mid_img">
 			<center>
 			<h1>Sarran Anders</h1>
 			</center>
 			<center>
 			</div></center></td>
-			<td width="33.3%"><div class="right_img">
+			<td width="30%"><div class="right_img">
 			<center>
 			<h1>Charles Falls</h1>
 			</center>
