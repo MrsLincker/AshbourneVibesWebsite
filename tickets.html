@@ -7,12 +7,29 @@
 				background-color: white;
 				border-radius: 5px;
 				font-size: 20px;
+				margin-top: 20px;
 			}
 			.button:hover {
 				background-color: rgb(173,173,173);
 			}
 			.button:active {
-				background-color: rgb(173,173,173);
+				background-color: rgb(173,173,173);			
+			}
+			.del_button {
+				float: right;
+				margin-right: 20px;
+				background-color: white;
+				border-color: red;
+				color: red;
+				font-size: 20px;
+				border-radius: 5px;
+				width: 30px;
+			}
+			.Ticket_Container {
+				margin: 3px;
+				background-color: rgb(200,200,200);
+				border-radius: 20px;
+				height: 100px;
 			}
 		</style>
 	</head>
@@ -35,32 +52,59 @@
 		
 		<center><div class="Container" style="	width: 65%;
 												margin-top: 15px;
-												height: 500px;
+												height: auto;
+												max-height: 50vw;
+												max-width: 1150px;
 												">
 			<div style="width: 100%; height: 85px">
-			<h1 style="float: left; padding-left: 12px;"><u>Trolliey</u></h1>
+			<h1 style="float: left; padding-left: 12px;"><u>Shoppin' Trolley</u></h1>
 			</div>
-			<div id="Ticket_Container" class="Ticket_Container">
-			
+				<div id="scrollBox" style="overflow-y: auto;max-height: 420px">
+					<div id="Ticket_Container" class="Ticket_Container">
+						<div style="border-bottom-style: solid; height: 43px">	
+							<h1 style="float: left; margin: 10px">Adult Ticket</h1>
+						</div>
+						<h1 style="margin: 10px; position: relative; right: 10px">£10.00</h1>
+						<button  style="visibility: hidden;" class="del_button" onclick="">x</button>
+					</div>
+				</div>
 			<button class="button" onclick="newTicket()">+</button>
+			<div style="border-top-style: solid; border-color: rgb(173,173,173); margin-top: 60px">
+				<h1>Test</h1>
+			</div>
 		</div></center>
 			
 		<script>
-		 var ticket = document.querySelector('#Ticket_Container');
-		 var num = 0;
+		 //This took me ages so please appreciate it
+		var ticket = document.querySelector('#Ticket_Container');
+		var num = 0;
 		 
-		 function newTicket(){
+		function newTicket(){
 			num += 1;
 			var ticket_clone = ticket.cloneNode(true);
 			ticket_clone.id = "Ticket_Container" + num.toString();
-			if (num != 1){
-				var prevtic = document.querySelector('#Ticket_Container' + (num - 1).toString());
-			} else{
-				var prevtic = document.querySelector('#Ticket_Container');
+			if (num < 19){
+				if (num != 1){
+					var prevtic = document.querySelector('#Ticket_Container' + (num - 1).toString());
+				} else{
+					var prevtic = document.querySelector('#Ticket_Container');
+				}
+				var children = ticket_clone.children;
+				children[1].setAttribute("onclick","deleteTicket(" + ticket_clone.id + ")");
+				children[1].style.visibility = "visible";
+				
+				prevtic.after(ticket_clone);
+			} else {
+				alert("You may not buy more than 20 tickets at once")
+				num = num - 1
 			}
-			
-			prevtic.after(ticket_clone);
-		 }
+		}
+		
+		function deleteTicket(ticket){
+			var parent = ticket.parentNode;
+			parent.removeChild(ticket);
+			num = num - 1;
+		}
 		</script>
 	</body>
 </html>
