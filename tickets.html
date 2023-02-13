@@ -40,10 +40,27 @@
 			<div style="width: 100%; height: 85px">
 			<h1 style="float: left; padding-left: 12px;"><u>Trolliey</u></h1>
 			</div>
-			<div class="Ticket_Container">
+			<div id="Ticket_Container" class="Ticket_Container">
 			
-			<button class="button">+</button>
+			<button class="button" onclick="newTicket()">+</button>
 		</div></center>
 			
+		<script>
+		 var ticket = document.querySelector('#Ticket_Container');
+		 var num = 0;
+		 
+		 function newTicket(){
+			num += 1;
+			var ticket_clone = ticket.cloneNode(true);
+			ticket_clone.id = "Ticket_Container" + num.toString();
+			if (num != 1){
+				var prevtic = document.querySelector('#Ticket_Container' + (num - 1).toString());
+			} else{
+				var prevtic = document.querySelector('#Ticket_Container');
+			}
+			
+			prevtic.after(ticket_clone);
+		 }
+		</script>
 	</body>
 </html>
