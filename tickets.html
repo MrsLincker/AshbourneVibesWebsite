@@ -2,32 +2,48 @@
 	<head>
 		<link rel="stylesheet" href="menu_bar.css">
 		<style>
-		.Contact_Container
-			{
-			background-color: white;
-			border-width: 10px;
-			border-color: rgb(157,208,229);
-			height: 60px;
-			width: 30%;
-			margin-top: 60px;
-			position: relative;
-			border-radius: 20px;
-			font-family: Courier New;
-			font-size: 30px;
+			.button {
+				width: 30px;
+				background-color: white;
+				border-radius: 5px;
+				font-size: 20px;
+			}
+			.button:hover {
+				background-color: rgb(173,173,173);
+			}
+			.button:active {
+				background-color: rgb(173,173,173);
 			}
 		</style>
 	</head>
 	
 	<body>
-		<ul>
-			<li><a href="news.html">News</a></li>
-			<li><a href="contact.html">Contact</a></li>
-			<li><a class="active" href="tickets.html">Tickets</a></li>
-			<li><a href="home.html">Home</a></li>
-		</ul>
-		
-		<center><div class="Contact_Container">
+		<div class="menu">
+			<ul>
+				<li style="float: left;padding-left: 5px"><img src="town_council_logo.png" style="height: 41px"></li>
+				<li><a href="news.html">News</a></li>
+				<li><a href="contact.html">Contact</a></li>
+				<li><a class="active" href="tickets.html">Tickets</a></li>
+				<li><a href="home.html">Home</a></li>
+			</ul>
+		</div>
+		<center><div class="Container" style="	width: 230px;
+												margin-top: 80px;
+												min-width: 230px;">
 			<h1>Tickets</h1>
 		</div></center>
+		
+		<center><div class="Container" style="	width: 65%;
+												margin-top: 15px;
+												height: 500px;
+												">
+			<div style="width: 100%; height: 85px">
+			<h1 style="float: left; padding-left: 12px;"><u>Trolliey</u></h1>
+			</div>
+			<div class="Ticket_Container">
+			
+			<button class="button">+</button>
+		</div></center>
+			
 	</body>
 </html>

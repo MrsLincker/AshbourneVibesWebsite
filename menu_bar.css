@@ -4,7 +4,7 @@ background-image: url(stripes.avif);
 accent-color: rgb(157,208,229);
 }
 
-ul {
+.menu ul {
 list-style-type: none;
 margin: 0;
 padding: 0;
@@ -16,11 +16,11 @@ width: 100%;
 z-index: 99 !important;
 }
 
-li {
+.menu li {
 float: right;
 }
 
-li a {
+.menu li a {
 display: block;
 color: black;
 text-align: center;
@@ -29,7 +29,17 @@ text-decoration: none;
 font-family: Courier New;
 }
 
-li a:hover {
+.menu li a:hover {
 background-color: rgb(64,114,183);
 color: white;
 }
+
+.Container
+			{
+			background-color: white;
+			border-width: 10px;
+			border-color: rgb(157,208,229);
+			border: 10px solid rgb(157,208,229);
+			font-family: Courier New;
+			border-radius: 20px;
+			}
