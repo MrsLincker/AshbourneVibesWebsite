@@ -25,11 +25,57 @@
 				border-radius: 5px;
 				width: 30px;
 			}
+			.del_button:hover {
+				background-color: rgb(250,129,120);
+			}
+			.del_button:active {
+				background-color: rgb(250,129,120);
+			}
+			
 			.Ticket_Container {
 				margin: 3px;
 				background-color: rgb(200,200,200);
 				border-radius: 20px;
 				height: 100px;
+			}
+			
+			.dropbtn {
+				background-color: #04AA6D;
+				color: white;
+				padding: 10px;
+				font-size: 16px;
+				border: none;
+				border-radius: 5px;
+			}
+			.dropdown {
+			    position: relative;
+			    display: inline-block;
+				padding: 3px;
+				float: left;
+				margin-left: 8px;
+			}
+			.dropdown-content {
+			    display: none;
+			    position: absolute;
+			    background-color: #f1f1f1;
+			    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			    z-index: 1;
+			}
+			.dropdown-content a {
+				color: black;
+				text-decoration: none;
+				display: block;
+			}
+			.dropdown-content a:hover {
+			background-color: #ddd;
+			}
+
+			.dropdown:hover .dropdown-content {
+			display: block;
+			}
+
+			.dropdown:hover .dropbtn {
+			background-color: #3e8e41;
 			}
 		</style>
 	</head>
@@ -53,19 +99,27 @@
 		<center><div class="Container" style="	width: 65%;
 												margin-top: 15px;
 												height: auto;
+												min-height: 500px;
 												max-height: 50vw;
 												max-width: 1150px;
 												">
 			<div style="width: 100%; height: 85px">
-			<h1 style="float: left; padding-left: 12px;"><u>Shoppin' Trolley</u></h1>
+			<h1 style="float: left; padding-left: 12px;"><u>Purchase Tinkets</u></h1>
 			</div>
-				<div id="scrollBox" style="overflow-y: auto;max-height: 420px">
+				<div id="scrollBox" style="overflow-y: auto;max-height: 420px; min-height: 200px;">
 					<div id="Ticket_Container" class="Ticket_Container">
 						<div style="border-bottom-style: solid; height: 43px">	
-							<h1 style="float: left; margin: 10px">Adult Ticket</h1>
+							<div class="dropdown">
+								<button class="dropbtn">Adult Ticket</button>
+							    <div class="dropdown-content">
+								<a><button style="width: 90px; height: 40px;" onclick="changeAdult(parent);">Adult Ticket</button></a>
+								<a><button style="width: 90px; height: 40px;" onclick="changeChild(parent);">Child Ticket</button></a>
+								<a><button style="width: 90px; height: 40px;" onclick="">Family Ticket</button></a>
+							  </div>
+							</div>
 						</div>
-						<h1 style="margin: 10px; position: relative; right: 10px">£10.00</h1>
-						<button  style="visibility: hidden;" class="del_button" onclick="">x</button>
+						<h1 style="margin: 10px; position: relative; float: left;">£10.00</h1>
+						<button  style="visibility: hidden; margin: 12px;" class="del_button" onclick=""><b>x</b></button>
 					</div>
 				</div>
 			<button class="button" onclick="newTicket()">+</button>
@@ -75,28 +129,47 @@
 		</div></center>
 			
 		<script>
-		 //This took me ages so please appreciate it
+		//This took me ages so please appreciate it
 		var ticket = document.querySelector('#Ticket_Container');
 		var num = 0;
-		 
+		var idnum = 0;
+		
+		par = document.getElementById("scrollBox");
+		
 		function newTicket(){
 			num += 1;
+			idnum += 1;
 			var ticket_clone = ticket.cloneNode(true);
-			ticket_clone.id = "Ticket_Container" + num.toString();
+			ticket_clone.id = "Ticket_Container" + idnum.toString();
 			if (num < 19){
-				if (num != 1){
-					var prevtic = document.querySelector('#Ticket_Container' + (num - 1).toString());
-				} else{
-					var prevtic = document.querySelector('#Ticket_Container');
-				}
-				var children = ticket_clone.children;
-				children[1].setAttribute("onclick","deleteTicket(" + ticket_clone.id + ")");
-				children[1].style.visibility = "visible";
+				children = par.children;
+				prevtic = children[children.length - 1];
+				//if (num != 1){
+				//	var prevtic = document.querySelector('#Ticket_Container' + (num - 1).toString());
+				//} else{
+				//	var prevtic = document.querySelector('#Ticket_Container');
+				//}
 				
+				var cloneChildren = ticket_clone.children;
+				cloneChildren[2].setAttribute("onclick","deleteTicket(" + ticket_clone.id + ")");
+				cloneChildren[2].style.visibility = "visible";
+				
+				//var cloneGrandChildren = cloneChildren[0].children;
+				//cloneGrandChildren[0].innerhtml  = "test";
+				//alert(cloneGrandChildren[0].innerhtml);
+				//cloneGrandChildren[0].innerhtml = "sticky";
+				//cloneChildren[0].children[0].children[0].children[0].setAttribute("onclick", "changeAdult(" + ticket_clone.id + ")");
+				//cloneChildren[0].children[0].children[0].children[1].setAttribute("onclick", "changeChild(" + ticket_clone.id + ")");
+				//cloneChildren[0].children[0].children[0].children[2].setAttribute("onclick", "changeFamily(" + ticket_clone.id + ")");
 				prevtic.after(ticket_clone);
+				var newMadeTicket = document.getElementById(ticket_clone.id);
+				newMadeTicket.children[0].children[0].children[1].children[0].setAttribute("onclick", "changeAdult(\"" + ticket_clone.id + "\")");
+				newMadeTicket.children[0].children[0].children[1].children[1].setAttribute("onclick", "changeChild(\"" + ticket_clone.id + "\")");
+				newMadeTicket.children[0].children[0].children[1].children[2].setAttribute("onclick", "changeFamily(\"" + ticket_clone.id + "\")");
+				
 			} else {
-				alert("You may not buy more than 20 tickets at once")
-				num = num - 1
+				alert("You may not buy more than 20 tickets at once");
+				num = num - 1;
 			}
 		}
 		
@@ -105,6 +178,22 @@
 			parent.removeChild(ticket);
 			num = num - 1;
 		}
+		
+		function changeAdult(parentId){
+			var newMadeTicket = document.getElementById(parentId);
+			alert(parentId)
+		}
+		
+		function changeChild(parentId){
+			alert(parentId)
+			//var newMadeTicket = document.getElementById(parentId);
+			//parentId.children[0].children[0].children[0].innerHTML = "Child Ticket";
+		}
+		
+		function test_alert(x){
+			alert(x)
+		}
+			
 		</script>
 	</body>
 </html>
