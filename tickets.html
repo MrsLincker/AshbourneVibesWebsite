@@ -112,9 +112,9 @@
 							<div class="dropdown">
 								<button class="dropbtn">Adult Ticket</button>
 							    <div class="dropdown-content">
-								<a><button style="width: 90px; height: 40px;" onclick="changeAdult(parent);">Adult Ticket</button></a>
-								<a><button style="width: 90px; height: 40px;" onclick="changeChild(parent);">Child Ticket</button></a>
-								<a><button style="width: 90px; height: 40px;" onclick="">Family Ticket</button></a>
+								<a><button style="width: 90px; height: 40px;" onclick="changeAdult('Ticket_Container');">Adult Ticket</button></a>
+								<a><button style="width: 90px; height: 40px;" onclick="changeChild('Ticket_Container');">Child Ticket</button></a>
+								<a><button style="width: 90px; height: 40px;" onclick="changeFamily('Ticket_Container')">Family Ticket</button></a>
 							  </div>
 							</div>
 						</div>
@@ -163,9 +163,9 @@
 				//cloneChildren[0].children[0].children[0].children[2].setAttribute("onclick", "changeFamily(" + ticket_clone.id + ")");
 				prevtic.after(ticket_clone);
 				var newMadeTicket = document.getElementById(ticket_clone.id);
-				newMadeTicket.children[0].children[0].children[1].children[0].setAttribute("onclick", "changeAdult(\"" + ticket_clone.id + "\")");
-				newMadeTicket.children[0].children[0].children[1].children[1].setAttribute("onclick", "changeChild(\"" + ticket_clone.id + "\")");
-				newMadeTicket.children[0].children[0].children[1].children[2].setAttribute("onclick", "changeFamily(\"" + ticket_clone.id + "\")");
+				newMadeTicket.children[0].children[0].children[1].children[0].setAttribute("onclick", "changeAdult(\"" + "Ticket_Container" + idnum.toString() + "\")");
+				newMadeTicket.children[0].children[0].children[1].children[1].setAttribute("onclick", "changeChild(\"" + "Ticket_Container" + idnum.toString() + "\")");
+				newMadeTicket.children[0].children[0].children[1].children[2].setAttribute("onclick", "changeFamily(\"" + "Ticket_Container" + idnum.toString() + "\")");
 				
 			} else {
 				alert("You may not buy more than 20 tickets at once");
@@ -180,18 +180,23 @@
 		}
 		
 		function changeAdult(parentId){
+			alert(parentId);
 			var newMadeTicket = document.getElementById(parentId);
-			alert(parentId)
+			newMadeTicket.children[0].children[0].children[0].innerHTML = "Adult Ticket";
 		}
 		
 		function changeChild(parentId){
-			alert(parentId)
-			//var newMadeTicket = document.getElementById(parentId);
-			//parentId.children[0].children[0].children[0].innerHTML = "Child Ticket";
+			var newMadeTicket = document.getElementById(parentId);
+			newMadeTicket.children[0].children[0].children[0].innerHTML = "Child Ticket";
+		}
+		
+		function changeFamily(parentId){
+			var newMadeTicket = document.getElementById(parentId);
+			newMadeTicket.children[0].children[0].children[0].innerHTML = "Family Ticket";
 		}
 		
 		function test_alert(x){
-			alert(x)
+			alert(x);
 		}
 			
 		</script>
