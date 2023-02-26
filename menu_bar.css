@@ -2,6 +2,7 @@ body
 {
 background-image: url(stripes.avif);
 accent-color: rgb(157,208,229);
+font-family: Courier New;
 }
 
 .menu ul {
@@ -34,12 +35,12 @@ background-color: rgb(64,114,183);
 color: white;
 }
 
-.Container
-			{
-			background-color: white;
-			border-width: 10px;
-			border-color: rgb(157,208,229);
-			border: 10px solid rgb(157,208,229);
-			font-family: Courier New;
-			border-radius: 20px;
-			}
+.Container 
+{
+background-color: white;
+border-width: 10px;
+border-color: rgb(157,208,229);
+border: 10px solid rgb(157,208,229);
+font-family: Courier New;
+border-radius: 20px;
+}

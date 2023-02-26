@@ -1,10 +1,7 @@
 <html>
-	<head>
-		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="menu_bar.css">
-		<title>Tickets</title>
-		<style>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
 			.button {
 				width: 30px;
 				background-color: white;
@@ -43,13 +40,12 @@
 			}
 			
 			.dropbtn {
-				color: black;
-				background-color: rgb(157,208,229);
+				background-color: #04AA6D;
+				color: white;
 				padding: 10px;
 				font-size: 16px;
 				border: none;
 				border-radius: 5px;
-				font-family: Courier New;
 			}
 			.dropdown {
 			    position: relative;
@@ -79,8 +75,7 @@
 			}
 
 			.dropdown:hover .dropbtn {
-			background-color: rgb(64,114,183);
-			color: white;
+			background-color: #3e8e41;
 			}
 			
 			.popup {
@@ -117,42 +112,54 @@
 			  text-decoration: none;
 			  cursor: pointer;
 			}
-			
 
-		.popup {
-		  display: none; 
-		  position: fixed; 
-		  z-index: 1; 
-		  padding-top: 200px; 
-		  left: 0;
-		  top: 0;
-		  width: 100%; /* Full width */
-		  height: 100%; /* Full height */
-		  overflow: auto; /* Enable scroll if needed */
-		  background-color: rgb(0,0,0); /* Fallback color */
-		  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-		}
+body {font-family: Arial, Helvetica, sans-serif;}
 
-		.close {
-		  color: #aaaaaa;
-		  float: right;
-		  font-size: 28px;
-		  font-weight: bold;
-		}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
-		.close:hover,
-		.close:focus {
-		  color: #000;
-		  text-decoration: none;
-		  cursor: pointer;
-		}
-		</style>
-	</head>
-	
-	<body>
-		<div class="menu">
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="menu">
 			<ul>
-				<li style="float: left;padding-left: 5px"><a style="padding-top: 2px;padding-bottom:2px;" href="https://www.ashbournetowncouncil.gov.uk/"><img src="town_council_logo.png" style="height: 41px"></a></li>
+				<li style="float: left;padding-left: 5px"><img src="town_council_logo.png" style="height: 41px"></li>
 				<li><a href="news.html">News</a></li>
 				<li><a href="contact.html">Contact</a></li>
 				<li><a class="active" href="tickets.html">Tickets</a></li>
@@ -171,7 +178,6 @@
 												min-height: 500px;
 												max-height: 900px;
 												max-width: 1150px;
-												min-width: 350px;
 												">
 			<div id="Cont" style="width: 100%; height: 85px">
 			<h1 style="float: left; padding-left: 12px;"><u>Purchase Tinkets</u></h1>
@@ -193,25 +199,54 @@
 					</div>
 				</div>
 			<button class="button" onclick="newTicket()">+</button>
-			<div style="border-top-style: solid; border-color: rgb(173,173,173); margin-top: 60px; height: auto;min-height: 110px;">
+			<div style="border-top-style: solid; border-color: rgb(173,173,173); margin-top: 60px;">
 				<h1 id="price">Total: £10.00</h1>
-				<button id="myBtn" style="float:right; margin-right: 50">Finish Booking</button>
-			</div>
-		</div></center>
-		
-		<center><div id="popup" class="popup">
-			<div class="Container" style="width: 300px;height: 280px;">
-				<span class="close" style="margin-right: 20px"><b>x</b></span>
-				<p style="padding-top: 20px">Please complete the following to purchase your tickets:</p>
-				<form>
-					<label for="name">Please enter a ticketholder name:</label>
-					<input type="text"></input><br>
-					<input type="submit" style="margin-top: 10px"></input>
-				</form>
-				<p>This would be where I would ask you for your card details and stuff but I'm not going to make that because why</p>
 			</div>
 		</div></center>
 
-		<script src="ticketsJS.js"></script>
-	</body>
+<h2>Modal Example</h2>
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
 </html>
